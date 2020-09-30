@@ -37,22 +37,23 @@ def func(request):
 
 
 			if(c=="1" and d=="1"):
-				q=course.objects.filter().values('co')
-				print(q)
-				return JsonResponse(list(q), safe=False)
+				q2=course.objects.filter().values('co')
+				print(q2)
+# 				return JsonResponse(list(q), safe=False)
 
 			elif(c!="1" and d=="1"):
 				q1=course.objects.filter(co=c).values('id')
 				q2=branch.objects.filter(link1=q1[0]['id']).values('br','link1__id')
 				print(q2)
-				return JsonResponse(list(q2),safe=False)
+# 				return JsonResponse(list(q2),safe=False)
 			
 
 			elif(c=="1" and d!="1"):
 				q1=branch.objects.filter(br=d, link1=e).values('id')
 				q2=sem.objects.filter(link2=q1[0]['id']).values('sems')
 				print(q2)
-				return JsonResponse(list(q2),safe=False)
+				
+			return JsonResponse(list(q2),safe=False)
 		 			 		
 
 
